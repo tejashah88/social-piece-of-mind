@@ -1,6 +1,15 @@
 # social-piece-of-mind
 A Chrome/Firefox extension that hides the active status and read receipts from messenger.com to give you a peace of mind.
 
+## How to use
+Simply go to messenger.com and the extension will work automatically! If you want to disable the hiding features at any point in time, follow the instructions below.
+
+### Chrome/Brave
+Right-click the extension icon and select 'Options', which will take you to the options page.
+
+### Firefox
+Go to `about:addons`, click on 'Social Piece of Mind', and then click on 'Preferences', which will take you to the options page.
+
 ## How to install
 
 ### Chrome/Brave
