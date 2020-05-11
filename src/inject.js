@@ -72,19 +72,6 @@ function hideDeliveryCircleNodes() {
     hideNodes(deliveryStatusNodes);
 }
 
-// Source: https://stackoverflow.com/a/2956980
-function setIntervalForXTimes(callback, delay, maxCount) {
-    let count = 0;
-    const intervalId = setInterval(function() {
-        callback();
-        console.log('lol');
-
-        if (++count == maxCount) {
-            clearInterval(intervalId);
-        }
-    }, delay);
-}
-
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message === 'activate-piece-of-mind') {
@@ -100,13 +87,12 @@ chrome.runtime.onMessage.addListener(
 
                 // NOTE/HACK: 'Seen By' and delivery statuses are generated everytime you switch to a new person to chat,
                 // and sometimes the components won't immediately appear. To get around this, we call the following functions
-                // for a set number of times, delaying by a set interval of time. For example, if 'UPDATE_INTERVAL' was 100 (ms)
-                // and 'REPEAT_COUNT' is 10, then the function would be called 10 times, delaying every 100 ms.
+                // every set amount of delay time.
                 if (scanForSeenBy)
-                    setIntervalForXTimes(hideSeenByNodes, UPDATE_INTERVAL, REPEAT_COUNT);
+                    setInterval(hideSeenByNodes, UPDATE_INTERVAL);
 
                 if (scanForDelivery)
-                    setIntervalForXTimes(hideDeliveryCircleNodes, UPDATE_INTERVAL, REPEAT_COUNT);
+                    setInterval(hideDeliveryCircleNodes, UPDATE_INTERVAL);
             });
         }
     }
