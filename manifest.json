@@ -1,0 +1,35 @@
+{
+    "name": "Social Piece of Mind",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "A Chrome/Firefox extension that hides the 'Active X ago' and read receipts from messenger.com to give you a peace of mind :)",
+    "homepage_url": "https://github.com/tejashah88/social-piece-of-mind",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "background": {
+        "scripts": ["src/background.js"]
+    },
+    "options_ui": {
+        "page": "options/options.html",
+        "open_in_tab": false
+    },
+    "permissions": [
+        "https://www.messenger.com/*",
+        "tabs",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+              "matches": ["https://www.messenger.com/*"],
+              "js": ["src/inject.js"]
+        }
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "socialpieceofmind.tejashah88@gmail.com"
+        }
+    }
+}
