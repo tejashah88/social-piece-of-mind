@@ -18,13 +18,17 @@
     },
     "permissions": [
         "https://www.messenger.com/*",
+        "https://www.facebook.com/messages/*",
         "tabs",
         "storage"
     ],
     "content_scripts": [
         {
-              "matches": ["https://www.messenger.com/*"],
-              "js": ["src/inject.js"]
+            "matches": [
+                "https://www.messenger.com/*",
+                "https://www.facebook.com/messages/*"
+            ],
+            "js": ["src/inject.js"]
         }
     ],
     "browser_specific_settings": {
